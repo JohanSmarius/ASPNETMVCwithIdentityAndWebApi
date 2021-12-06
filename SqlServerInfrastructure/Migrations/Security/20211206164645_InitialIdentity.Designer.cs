@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication.Models;
 
-namespace WebApplication.Migrations.Security
+namespace SqlServerInfrastructure.Migrations.Security
 {
     [DbContext(typeof(SecurityContext))]
-    [Migration("20211206150527_InitialSecurity")]
-    partial class InitialSecurity
+    [Migration("20211206164645_InitialIdentity")]
+    partial class InitialIdentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

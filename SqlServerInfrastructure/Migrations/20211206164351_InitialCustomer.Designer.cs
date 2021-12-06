@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication.Models;
 
-namespace WebApplication.Migrations
+namespace SqlServerInfrastructure.Migrations
 {
     [DbContext(typeof(CustomerContext))]
-    [Migration("20211206094450_Initial")]
-    partial class Initial
+    [Migration("20211206164351_InitialCustomer")]
+    partial class InitialCustomer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,6 +36,20 @@ namespace WebApplication.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            EmailAddress = "jsmarius@hotmail.com",
+                            Name = "Johan"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            EmailAddress = "jaw.smarius@avans.nl",
+                            Name = "JohanWerk"
+                        });
                 });
 #pragma warning restore 612, 618
         }

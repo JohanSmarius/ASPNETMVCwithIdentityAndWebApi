@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication.Models;
 
-namespace WebApplication.Migrations.Security
+namespace SqlServerInfrastructure.Migrations.Security
 {
     [DbContext(typeof(SecurityContext))]
     partial class SecurityContextModelSnapshot : ModelSnapshot

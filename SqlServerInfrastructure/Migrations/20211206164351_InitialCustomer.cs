@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WebApplication.Migrations
+namespace SqlServerInfrastructure.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialCustomer : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,6 +19,16 @@ namespace WebApplication.Migrations
                 {
                     table.PrimaryKey("PK_Customers", x => x.Id);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Customers",
+                columns: new[] { "Id", "EmailAddress", "Name" },
+                values: new object[] { 1, "jsmarius@hotmail.com", "Johan" });
+
+            migrationBuilder.InsertData(
+                table: "Customers",
+                columns: new[] { "Id", "EmailAddress", "Name" },
+                values: new object[] { 2, "jaw.smarius@avans.nl", "JohanWerk" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

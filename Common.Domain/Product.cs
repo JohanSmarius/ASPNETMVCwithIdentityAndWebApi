@@ -1,4 +1,4 @@
-﻿namespace WebApplication.Models
+﻿namespace Common.Domain
 {
     public class Product
     {

@@ -2,3 +2,12 @@
 
 
 <div class="alert alert-info">@Model.CustomerName</div>
+
+<div>
+<ul>@foreach (var product in Model.Products)
+{
+    <li>@product.Name</li>
+}
+</ul>
+
+</div>
