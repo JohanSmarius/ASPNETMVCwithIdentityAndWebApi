@@ -1,8 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using WebApplication.Models;
+using WebApplication.Helpers;
 
 namespace WebApplication.Controllers
 {
@@ -11,12 +19,14 @@ namespace WebApplication.Controllers
     {
         private UserManager<IdentityUser> _userManager;
         private SignInManager<IdentityUser> _signInManager;
-
+        private readonly IConfiguration _configuration;
+        
         public AccountController(UserManager<IdentityUser> userMgr,
-            SignInManager<IdentityUser> signInMgr)
+            SignInManager<IdentityUser> signInMgr, IConfiguration configuration)
         {
             _userManager = userMgr;
             _signInManager = signInMgr;
+            _configuration = configuration;
         }
 
         [AllowAnonymous]
