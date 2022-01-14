@@ -16,7 +16,7 @@ using WebApplication.Models;
 
 namespace WebApplication.Controllers
 {
-    [Authorize()]
+    [Authorize(Policy = "CustomerOnly")]
     public class ProductController : Controller
     {
         private readonly IConfiguration _configuration;
