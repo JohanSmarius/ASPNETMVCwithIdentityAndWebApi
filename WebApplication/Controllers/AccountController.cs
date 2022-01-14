@@ -100,10 +100,14 @@ namespace WebApplication.Controllers
             };
 
             var result = await _userManager.CreateAsync(user, userModel.Password);
-            await _userManager.AddClaimAsync(user, new System.Security.Claims.Claim("Customer", "Customer"));
+            if (result.Succeeded)
+            {
+                var addClaimResult = await _userManager.AddClaimAsync(user, new System.Security.Claims.Claim("Customer", "Customer"));
 
-            if (result.Succeeded) {
-                return RedirectToAction("Index", "Home");
+                if (addClaimResult.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
 
             return View();
