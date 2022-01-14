@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using WebApplication.Models;
 
 namespace WebApplication
@@ -35,8 +36,15 @@ namespace WebApplication
             services.AddDbContext<SecurityContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("SecurityDb")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedEmail = false)
-                .AddEntityFrameworkStores<SecurityContext>().AddDefaultTokenProviders();
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                // Reduce the complexity rules. Not because this is best practice, but simply to allow 
+                // an user to be created with a simple password for testing.
+                options.SignIn.RequireConfirmedEmail = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 4;
+                options.Password.RequireNonAlphanumeric = false;
+            }).AddEntityFrameworkStores<SecurityContext>().AddDefaultTokenProviders();
 
             services.AddControllersWithViews();
 
