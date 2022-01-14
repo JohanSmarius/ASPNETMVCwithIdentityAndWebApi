@@ -46,6 +46,10 @@ namespace WebApplication
                 options.Password.RequireNonAlphanumeric = false;
             }).AddEntityFrameworkStores<SecurityContext>().AddDefaultTokenProviders();
 
+            services.AddAuthorization(options =>
+                options.AddPolicy("CustomerOnly", policy => policy.RequireClaim("Customer")));
+
+
             services.AddControllersWithViews();
 
             services.AddDistributedMemoryCache();
